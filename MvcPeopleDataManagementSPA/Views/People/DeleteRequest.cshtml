@@ -1,0 +1,14 @@
+﻿@model PersonViewModel
+@{ ViewData["Title"] = "Remove person"; }
+
+<br />
+<br />
+
+@if (Model != null)
+{
+    <h5>Are you sure you want to remove the person?</h5>
+    <br />
+    <a asp-action="Delete" asp-route-id="@Model.Person.Id">|Remove|</a>
+}
+
+<a asp-action="Index" style="margin-left: 20px">|Back|</a>

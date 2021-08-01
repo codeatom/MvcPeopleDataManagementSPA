@@ -1,0 +1,15 @@
+﻿@model EditCity
+@{ ViewData["Title"] = "Edit City"; }
+
+<h1>Edit</h1>
+
+<form asp-action="Edit" method="post">
+    <label asp-for="@Model.CreateCity.CityName"></label>
+    <input asp-for="@Model.CreateCity.CityName" />
+    <span asp-validation-for="@Model.CreateCity.CityName"></span>
+
+    <button>Save changes</button>
+</form>
+
+<br />
+<a asp-action="Index" asp-controller="City">|Back|</a>

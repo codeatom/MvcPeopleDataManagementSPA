@@ -1,0 +1,15 @@
+﻿@model EditCountry
+@{ ViewData["Title"] = "Edit Country"; }
+
+<h1>Edit</h1>
+
+<form asp-action="Edit" method="post">
+    <label asp-for="@Model.CreateCountry.Name"></label>
+    <input asp-for="@Model.CreateCountry.Name" />
+    <span asp-validation-for="@Model.CreateCountry.Name"></span>
+
+    <button>Save changes</button>
+</form>
+
+<br />
+<a asp-action="Index" asp-controller="Country">|Back|</a>

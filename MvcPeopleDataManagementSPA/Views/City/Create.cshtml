@@ -1,0 +1,35 @@
+﻿@model CreateCity
+@{ ViewData["Title"] = "Cities"; }
+
+<h3>Add a city to a country</h3>
+
+<a asp-action="Index" asp-controller="City">|Back|</a>
+<hr />
+
+
+
+@if (Model != null)
+{
+
+    <form asp-action="Create" asp-controller="City" method="post">
+
+        <label asp-for="StateId">Country</label>
+        <select asp-for="StateId" style="margin-right: 30px">
+            <option value="" disabled>Select a Country</option>
+            @foreach (Country country in Model.CountryList)
+            {
+                <option value="@country.Id">@country.Name</option>
+            }
+        </select>
+
+        <label asp-for="CityName">City</label>
+        <input asp-for="CityName" placeholder="required" style="margin-right: 30px" />
+
+        <button style="margin-right: 10px">Add</button>
+        <button type="reset">Reset</button>
+    </form>
+}
+
+<br />
+<hr />
+<a asp-action="Index" asp-controller="City">|Back|</a>

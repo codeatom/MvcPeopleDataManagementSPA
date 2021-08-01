@@ -1,0 +1,20 @@
+﻿@model CityViewModel
+@{ ViewData["Title"] = "Remove city"; }
+
+
+
+@if (Model != null)
+{
+    if (Model.City.PersonList == null || Model.City.PersonList.Count < 1)
+    {
+        <h3>Are you sure you want to delete the city?</h3>
+        <a asp-action="Delete" asp-route-id="@Model.City.Id">|Delete|</a>
+    }
+    else
+    {
+        <h3>Cannot remove City. It contains person/people</h3>
+    }
+}
+    
+
+<a asp-action="Index" style="margin-left: 20px">|Back|</a>

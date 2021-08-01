@@ -1,0 +1,54 @@
+﻿@model PersonLanguageViewModel
+@{ ViewData["Title"] = "Details"; }
+
+
+<br />
+<h3>Person languages</h3>
+<hr />
+
+<div class="row">
+    <div class="col-4">
+        <h4>Spoken Languages</h4>
+    </div>
+
+    <div class="col-4">
+        <h4>Available Languages</h4>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-4">
+        <ul>
+            @foreach(var item in Model.person.PersonLanguages)
+            {
+            <li>
+                @item.Language.Name @Html.ActionLink("Remove", "RemovePersonLanguage", "People", new { personId = Model.person.Id, languageId = item.Language.Id })
+            </li>
+            }
+        </ul>
+    </div>
+
+    <div class="col-4">
+        <ul>
+            @foreach (var item in Model.UnSpokenLanguages)
+            {
+                <li>
+                    @item.Name @Html.ActionLink("Add", "AddPersonLanguage", "People",  new { personId = Model.person.Id, languageId = item.Id})
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
+
+<a asp-action="Details" asp-route-id="@Model.person.Id">|Back to details|</a>
+<a asp-action="Index" style="margin-left: 40px">|Back to people list|</a>
+
+

@@ -1,0 +1,46 @@
+﻿@model List<IdentityRole>
+@{
+    ViewData["Title"] = "RoleList";
+}
+
+<h1>RoleList</h1>
+<hr />
+
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+
+            <div class="col-1">
+                <h4>Role</h4>
+            </div>
+
+            <div class="col-1">
+                <h4>Action</h4>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-1">
+                    @item.Name
+                </div>
+
+                <div class="col-1">
+                    @Html.ActionLink("|Remove|", "RemoveRole", "Admin", new { roleName = item.Name })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<br />
+
+<a asp-action="CreateRole" asp-controller="Admin">|Create Role|</a>
+
+<a asp-action="Index" style="margin-left: 20px">|Back|</a>

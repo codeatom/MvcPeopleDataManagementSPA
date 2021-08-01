@@ -1,0 +1,40 @@
+﻿@model CityViewModel
+
+@{ ViewData["Title"] = "Cities"; }
+
+
+<a asp-action="Index" asp-controller="City">|Back|</a>
+<hr />
+
+@if (Model != null)
+{
+<table>
+
+    <thead>
+        <tr>
+            <th>@Model.CountryName cities</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (City city in Model.CityList)
+    {
+      <tr>
+           <td>
+               @city.Name
+           </td>
+
+           <td>
+               <a asp-action="Edit" asp-route-id="@city.Id" style="margin-left: 20px">|Edit|</a>
+               <a asp-action="DeleteRequest" asp-route-id="@city.Id" style="margin-left: 20px; color: red">|Delete|</a>
+           </td>
+      </tr>
+    }
+    </tbody>
+
+</table>
+}
+
+
+<br />
+<a asp-action="Index" asp-controller="City">|Back|</a>

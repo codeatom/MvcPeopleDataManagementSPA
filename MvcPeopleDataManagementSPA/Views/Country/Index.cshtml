@@ -1,0 +1,38 @@
+﻿@model CountryViewModel
+@{ ViewData["Title"] = "Countries"; }
+
+
+<h1>Country Index</h1>
+
+<a asp-action="Create" style="margin-right: 50px">|Create Country|</a>
+<hr />
+
+
+@if (Model != null && Model.CountryList.Count > 0)
+{
+<table>
+    <thead>
+        <tr>
+            <th>Countries</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CountryList) 
+        {
+<tr>
+    <td>@item.Name</td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Id" style="margin-left: 20px">|Edit|</a>
+        <a asp-action="AddCity" asp-controller="City" asp-route-id="@item.Id" method="post" style="margin-left: 20px">|Add a City|</a>
+        <a asp-action="DisplayCities" asp-controller="City" asp-route-id="@item.Id" method="post" style="margin-left: 20px">|Show Cities|</a>
+        <a asp-action="DeleteRequest" asp-route-id="@item.Id" style="margin-left: 20px; color: red">|Delete|</a>
+    </td>
+</tr>
+}
+
+    </tbody>
+</table>}
+
+
+<hr />
+<a asp-action="Create" style="margin-right: 50px">|Create Country|</a>

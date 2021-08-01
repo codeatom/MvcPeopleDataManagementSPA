@@ -1,0 +1,11 @@
+﻿@model PeopleViewModel
+
+<label asp-for="CreatePerson.CityId" style="margin-left: 50px">City</label>
+<select asp-for="CreatePerson.CityId" style="margin-right: 10px">
+    <option value="" selected disabled>Select a City</option>
+    @foreach (var city in Model.CityList)
+    {
+        <option value="@city.Id">@city.Name</option>
+    }
+</select>
+

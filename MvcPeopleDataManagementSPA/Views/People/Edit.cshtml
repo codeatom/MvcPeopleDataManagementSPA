@@ -1,0 +1,39 @@
+﻿@model EditPerson
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+
+    <label asp-for="CreatePerson.FirstName"></label><br>
+    <input asp-for="CreatePerson.FirstName" />
+    <span asp-validation-for="CreatePerson.FirstName"></span><br /><br />
+
+    <label asp-for="CreatePerson.LastName"></label><br>
+    <input asp-for="CreatePerson.LastName" />
+    <span asp-validation-for="CreatePerson.LastName"></span><br /><br />
+
+    <label asp-for="CreatePerson.CellphoneNumber"></label><br>
+    <input asp-for="CreatePerson.CellphoneNumber" />
+    <span asp-validation-for="CreatePerson.CellphoneNumber"></span><br /><br />
+
+    <label asp-for="City"></label><br>
+    <select asp-for="CreatePerson.CityId">
+        <option value="" disabled>Select a City</option>
+        @foreach (City city in Model.CityList)
+        {
+            <option value="@city.Id">@city.Name</option>
+        }
+    </select>
+    <span asp-validation-for="CreatePerson.CityId"></span><br /><br /><br />
+
+    <input type="submit" value="Save changes" />
+</form>
+
+<br />
+<br />
+
+<a asp-action="Index">|Go Back|</a>
+

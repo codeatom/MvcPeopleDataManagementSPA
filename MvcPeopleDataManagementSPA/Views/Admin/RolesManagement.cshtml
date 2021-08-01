@@ -1,0 +1,87 @@
+﻿@model RolesManagementViewModel
+
+@{
+    ViewData["Title"] = "RolesManagement";
+}
+
+<h1>Roles Management for user</h1>
+
+    @if (ViewBag.ErrorMsg != null)
+    {
+         <h2>ViewBag.ErrorMsg</h2>
+    }
+
+    <hr />
+
+
+
+    <div class="row">
+
+        <div class="col-6">
+            <div class="row">
+                <div class="col-2">
+                    <h4>Role</h4>
+                </div>
+                <div class="col-2">
+                    <h4>Action</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="row">
+                <div class="col-2">
+                    <h4>Role</h4>
+                </div>
+                <div class="col-2">
+                    <h4>Action</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="row">
+
+        <div class="col-6">
+            @foreach (var item in Model.UserRoles)
+            {
+                <div class="row">
+                    <div class="col-2">
+                        @item
+                    </div>
+
+                    <div class="col-2">
+                        @Html.ActionLink("Remove", "RemoveRoleFromUser", "Admin", new { userId = Model.UserId, roleName = item })
+                    </div>
+                 </div>
+             }
+        </div>
+            
+        <div class="col-6">
+            @foreach (var item in Model.IdentityRoles)
+            {
+                <div class="row">
+                    <div class="col-2">
+                        @item.Name
+                    </div>
+
+                    <div class="col-2">
+                        @Html.ActionLink("Add", "AddRoleToUser", "Admin", new { userId = Model.UserId, roleName = item.Name })
+                    </div>
+                </div>
+             }
+        </div>
+            
+    </div>
+
+
+    <br />
+    <br />
+
+    <div>
+        @Html.ActionLink("|Back to Details|", "Details", new { id = Model.UserId })
+        <a asp-action="UserList" style="margin-left: 20px">|Back to List|</a>
+    </div>

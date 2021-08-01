@@ -1,0 +1,117 @@
+﻿@model PeopleViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<form asp-action="Create" asp-controller="People" method="post">
+    <div>
+        <label asp-for="CreatePerson.CountryId" style="margin-left: 20px">Country</label>
+        <select asp-for="CreatePerson.CountryId" id="stateId" style="margin-right: 10px">
+            <option value="" selected disabled>Select a Country</option>
+            @foreach (Country country in Model.CountryViewModel.CountryList)
+            {
+                <option value="@country.Id">@country.Name</option>
+            }
+        </select><br />
+    </div>
+
+    <div id="result2">
+        <label asp-for="CreatePerson.CityId" style="margin-left: 50px">City</label>
+        <select asp-for="CreatePerson.CityId" style="margin-right: 10px">
+            <option value="" selected disabled>Select a City</option>
+            @foreach (var city in Model.CountryViewModel.CountryList[0].CityList)
+            {
+                @*<partial name="../Shared/_CitiesPartialView.cshtml" model="city" />*@
+            }
+        </select><br />
+    </div>
+
+    <div>
+        <label asp-for="CreatePerson.FirstName">First Name</label>
+        <input asp-for="CreatePerson.FirstName" placeholder="required" style="margin-right: 10px" />
+        <span asp-validation-for="CreatePerson.FirstName"></span><br />
+    </div>
+
+    <div>
+        <label asp-for="CreatePerson.LastName">Last Name</label>
+        <input asp-for="CreatePerson.LastName" placeholder="required" style="margin-right: 10px" />
+        <span asp-validation-for="CreatePerson.LastName"></span><br />
+    </div>
+
+    <div>
+        <label asp-for="CreatePerson.CellphoneNumber">Mobile no.</label>
+        <input asp-for="CreatePerson.CellphoneNumber" placeholder="optional" style="margin-right: 10px" />
+        <span asp-validation-for="CreatePerson.CellphoneNumber"></span><br /><br />
+    </div>
+
+    <div>
+        <button style="margin-right: 10px">Add person</button>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+
+
+
+<hr />
+<br />
+<br />
+<br />
+
+
+
+<form asp-action="Index" method="post">
+    <label asp-for="PersonViewModel.FilterText">Find a person</label>
+    <input asp-for="PersonViewModel.FilterText" />
+    <input type="submit" value="Search" />
+</form>
+
+
+
+<br />
+<br />
+
+
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="row">
+            <div class="col-2">
+                <h5>First Name</h5>
+            </div>
+
+            <div class="col-2">
+                <h5>Last Name</h5>
+            </div>
+
+            <div class="col-2">
+                <h5> City</h5>
+            </div>
+
+            <div class="col-2">
+                <h5> Country</h5>
+            </div>
+
+            <div class="col-2">
+                <h5>Mobile nr.</h5>
+            </div>
+        </div>
+
+        <hr />
+
+        @if (Model.PersonViewModel.PersonList != null)
+        {
+            foreach (var item in Model.PersonViewModel.PersonList)
+            {
+                <partial name="../Shared/_PersonPartialView.cshtml" model="item" />
+            }
+        }
+
+
+    </div>
+</div>
+
+
+<script src="~/js/myJs2.js"></script>

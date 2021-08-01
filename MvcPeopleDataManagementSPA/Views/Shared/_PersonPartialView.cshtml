@@ -1,0 +1,46 @@
+﻿@model Person
+
+@{
+    var showActionLink = (bool)ViewData["ShowActionLinks"];  
+}
+
+@if (Model != null)
+{
+<div class="row">
+    <div class="col-2">
+        <p>@Model.FirstName</p>
+    </div>
+
+    <div class="col-2">
+        <p>@Model.LastName</p>
+    </div>
+
+    <div class="col-2">
+        <p>@Model.CurrentCity.Name</p>
+    </div>
+
+    <div class="col-2">
+        <p>@Model.State.Name</p>
+    </div>
+
+    <div class="col-2">
+        <p>@Model.CellphoneNumber</p>
+    </div>
+
+    @if (showActionLink)
+    {
+        <div class="col-1">
+            <a asp-action="Details" asp-route-id="@Model.Id" id="editLink" method="post">|Details|</a>
+        </div>
+   
+        <div class="col-1">
+            <a asp-action="Edit" asp-route-id="@Model.Id" method="post" id="editLink">|Edit|</a>
+            <a asp-action="DeleteRequest" asp-route-id="@Model.Id" method="post" id="removeLink" style="color: red">|Remove|</a>
+        </div>
+    }
+
+   
+</div>
+
+<hr />
+}

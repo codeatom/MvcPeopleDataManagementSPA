@@ -1,0 +1,70 @@
+﻿@model List<IdentityAppUser>
+@{
+    ViewData["Title"] = "UserList";
+}
+
+<h1>UserList</h1>
+<hr />
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+
+            <div class="col-3">
+                <h4>UserName</h4>
+            </div>
+
+            <div class="col-3">
+                <h4>Email</h4>
+            </div>
+
+            <div class="col-2">
+                <h4>Failed</h4>
+            </div>
+
+            <div class="col-2">
+                <h4>Action</h4>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        @foreach (var item in Model)
+        {
+        <div class="row">
+            <div class="col-3">
+                @item.UserName
+            </div>
+
+            <div class="col-3">
+                @item.Email
+            </div>
+
+            <div class="col-2">
+                @item.AccessFailedCount
+            </div>
+
+            <div class="col-2">
+                <a asp-action="Details" asp-controller="Admin" asp-route-id="@item.Id">Details</a>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+<br />
+<a asp-action="Index">|Back|</a>
+
+
+
+
+
+
+
+
+
+

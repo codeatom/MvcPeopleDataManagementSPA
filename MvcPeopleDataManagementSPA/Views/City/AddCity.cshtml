@@ -1,0 +1,29 @@
+﻿@model CreateCity
+@{ ViewData["Title"] = "Cities"; }
+
+
+<br />
+
+<h3>Add a city to @Model.CountryName</h3>
+
+<a asp-action="Index" asp-controller="City">|Back|</a>
+
+<hr />
+<br />
+
+
+@if (Model != null)
+{
+<form asp-action="Create" asp-controller="City" method="post">
+    <input asp-for="StateId" value="@Model.StateId" type="hidden" />
+
+    <label asp-for="CityName">City</label>
+    <input asp-for="CityName" style="margin-right: 30px" />
+
+    <button style="margin-right: 10px">Add</button>
+    <button type="reset">Reset</button>
+</form>
+}
+
+<br />
+<a asp-action="Index" asp-controller="City">|Back|</a>
